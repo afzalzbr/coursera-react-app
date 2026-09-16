@@ -10,7 +10,7 @@ class DishDetail extends React.Component {
     }
 
     renderDish = (dish) => {
-        if (dish !== null) {
+        if (dish != null) {
             return (
                 <div className="col-12 col-md-5 m-1">
                     <Card>
@@ -31,7 +31,7 @@ class DishDetail extends React.Component {
     }
 
     renderComments = (comments) => {
-        if (comments === null) {
+        if (comments == null) {
             return (<div></div>)
         } else {
             return (
@@ -43,7 +43,7 @@ class DishDetail extends React.Component {
                                 <li key={comment.id}>
                                     {comment.comment}
                                     <br />
-                                    -- {comment.author + " " + comment.date}
+                                    -- {comment.author} , {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit'}).format(new Date(Date.parse(comment.date)))}
                                 </li>
                             )
                         })}
@@ -56,9 +56,11 @@ class DishDetail extends React.Component {
 
     render() {
         return (
-            <div className="row">
-                {this.renderDish(this.props.dish)}
-                {this.renderComments(this.props.dish === null ? null : this.props.dish.comments)}
+            <div className="container">
+                <div className="row">
+                    {this.renderDish(this.props.dish)}
+                    {this.renderComments(this.props.dish == null ? null : this.props.dish.comments)}
+                </div>
             </div>
         )
     }
