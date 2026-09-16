@@ -10,6 +10,7 @@ import { LEADERS } from "../shared/leaders";
 import { COMMENTS } from "../shared/comments";
 import Home from "./HomeComponent";
 import DishDetail from "./DishdetailComponent";
+import About from "./AboutComponent";
 
 class Main extends Component {
   constructor(props) {
@@ -51,7 +52,7 @@ class Main extends Component {
         />
       );
     };
-    
+
     return (
       <div>
         <Header />
@@ -63,6 +64,11 @@ class Main extends Component {
             component={() => <Menu dishes={this.state.dishes} />}
           />
           <Route path="/menu/:dishId" component={DishWithId} />
+          <Route
+            exact
+            path="/aboutus"
+            component={() => <About leaders={this.state.leaders} />}
+          />
           <Route exact path="/contactus" component={Contact} />
           <Redirect to="/home" />
         </Switch>
